@@ -1,0 +1,88 @@
+{
+  "name": "agwm",
+  "displayName": "AGWM",
+  "description": "AGWM - Anna's Git-Worktree Manager",
+  "version": "0.0.1",
+  "publisher": "annabanana",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "agwm-vc",
+          "title": "AGWM",
+          "icon": "media/logo.svg"
+        }
+      ]
+    },
+    "views": {
+      "agwm-vc": [
+        {
+          "id": "agwm-projects",
+          "name": "Projects"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "agwm.newBranch",
+        "title": "New Project Under Project Home"
+      },
+      {
+        "command": "agwm.deleteBranch",
+        "title": "Delete Branch"
+      },
+      {
+        "command": "agwm.openInWindow",
+        "title": "Open Project in Window"
+      }
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "agwm.newBranch",
+          "when": "view == agwm-projects && viewItem == projectHome"
+        },
+        {
+          "command": "agwm.deleteBranch",
+          "when": "view == agwm-projects && viewItem == project"
+        },
+        {
+          "command": "agwm.openInWindow",
+          "when": "view == agwm-projects && viewItem == project"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Anna's Git-Worktree Manager",
+      "type": "object",
+      "properties": {
+        "agwm.projectHomes": {
+          "type": "array",
+          "default": ["proj"],
+          "description": "Project Homes to select individual projects from."
+        },
+        "agwm.projects": {
+          "type": "array",
+          "default": [".dotfiles"],
+          "description": "Standalone projects which should not be expanded."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.21",
+    "@types/vscode": "^1.42.0",
+    "typescript": "^3.5.1",
+    "tslint": "^5.12.1"
+  }
+}
