@@ -2,6 +2,7 @@
   "name": "agwm",
   "displayName": "AGWM",
   "description": "AGWM - Anna's Git-Worktree Manager",
+  "repository": "https://github.com/anna-singleton/agwm",
   "version": "0.0.1",
   "publisher": "annabanana",
   "engines": {
